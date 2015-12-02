@@ -1,2 +1,2 @@
 ## Settings
-Settings package from Laravel 
+Settings package from Laravel 5
