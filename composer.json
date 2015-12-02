@@ -15,5 +15,6 @@
     "psr-4": {
       "Orchid\\Settings\\": ""
     }
-  }
+  },
+  "minimum-stability": "dev"
 }
