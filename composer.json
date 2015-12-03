@@ -2,7 +2,6 @@
   "name": "orchid/settings",
   "description": "Settings for The Laravel Framework.",
   "keywords": [
-    "framework",
     "laravel",
     "settings"
   ],

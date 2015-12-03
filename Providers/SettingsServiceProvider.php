@@ -32,17 +32,17 @@ class SettingsServiceProvider extends ServiceProvider
 	protected function registerConfig()
 	{
 		$this->publishes([
-				__DIR__ . '/../Config/settings.php' => config_path('cache.php'),
+				base_path() . '/config/settings.php' => config_path('cache.php'),
 		]);
 		$this->mergeConfigFrom(
-				__DIR__ . '/../Config/settings.php', 'cache'
+				base_path() . '/config/settings.php', 'cache'
 		);
 	}
 
 	protected function registerDatabase()
 	{
 		$this->publishes([
-				__DIR__ . '/../database/migrations/' => database_path('migrations'),
+				base_path() . '/database/migrations/' => database_path('migrations'),
 		], 'migrations');
 	}
 
