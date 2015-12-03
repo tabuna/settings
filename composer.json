@@ -16,11 +16,11 @@
       "Orchid\\Settings\\": ""
     }
   },
-  "minimum-stability": "dev",
   "extra": {
     "branch-alias": {
-      "dev-master": "master-dev"
+      "dev-master": "master"
     }
-  }
+  },
+  "minimum-stability": "dev",
 }
 
