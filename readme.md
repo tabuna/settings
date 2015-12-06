@@ -13,7 +13,7 @@ Settings package from Laravel 5
 1. install package
 
 	```php
-           `composer require orchid/settings`
+    `composer require orchid/settings`
 	```
 
 1. edit config/app.php
@@ -21,20 +21,20 @@ Settings package from Laravel 5
 	service provider :
 
 	```php
-		    Orchid\Settings\Providers\SettingsServiceProvider::class,
+	Orchid\Settings\Providers\SettingsServiceProvider::class,
 	```
 
     class aliases :
 
 	```php
-	        'Settings => Orchid\Settings\Facades\SettingsFacades::class
+	'Settings => Orchid\Settings\Facades\SettingsFacades::class
 	```
 
 1. create settings table
 
 	```php
-		php artisan vendor:publish
-		php artisan migrate
+	php artisan vendor:publish
+	php artisan migrate
 	```
 
 ## Usage
