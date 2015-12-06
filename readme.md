@@ -1,6 +1,5 @@
 ## Settings
-Settings package from Laravel 5
- * Simple key-value storage
+Simple key-value storage package from Laravel 5
 
 [![Latest Stable Version](https://poser.pugx.org/orchid/settings/v/stable)](https://packagist.org/packages/orchid/settings)
 [![Total Downloads](https://poser.pugx.org/orchid/settings/downloads)](https://packagist.org/packages/orchid/settings)
