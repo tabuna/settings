@@ -20,7 +20,7 @@ Simple key-value storage package from Laravel 5
 	service provider :
 
 	```php
-	Orchid\Settings\Providers\SettingsServiceProvider::class,
+	Orchid\Settings\Providers\SettingsServiceProvider::class
 	```
 
     class aliases :
