@@ -10,6 +10,7 @@ Settings package from Laravel 5
 `composer require orchid/settings`
 
 Include `Orchid\Settings\Providers\SettingsServiceProvider::class,` in your `config/app.php`
+
 And add Facade 'Settings => Orchid\Settings\Facades\SettingsFacades::class'
 
 ## Usage
