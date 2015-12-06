@@ -12,7 +12,7 @@ Simple key-value storage package from Laravel 5
 1. install package
 
 	```php
-    `composer require orchid/settings`
+    composer require orchid/settings
 	```
 
 1. edit config/app.php
