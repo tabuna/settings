@@ -26,7 +26,7 @@ Simple key-value storage package from Laravel 5
     class aliases :
 
 	```php
-	'Settings => Orchid\Settings\Facades\SettingsFacades::class
+	'Settings' => Orchid\Settings\Facades\SettingsFacades::class
 	```
 
 1. create settings table
