@@ -29,7 +29,7 @@ trait SettingTrait
      */
     public function get($key, $default = null)
     {
-        $config = config('cache.package.settings');
+        $config = config('orchid.package.settings');
         if ($config['status']) {
             return Cache::remember(implode(",", (array)$key), $config['times'], function () use ($key, $default) {
                 return $this->getNoCache($key, $default);
