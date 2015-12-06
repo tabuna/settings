@@ -32,10 +32,10 @@ class SettingsServiceProvider extends ServiceProvider
 	protected function registerConfig()
 	{
 		$this->publishes([
-				__DIR__ . '/../Config/settings.php' => config_path('cache.php'),
+				__DIR__ . '/../Config/settings.php' => config_path('settings.php'),
 		]);
 		$this->mergeConfigFrom(
-				__DIR__ . '/../Config/settings.php', 'cache'
+				__DIR__ . '/../Config/settings.php', 'settings'
 		);
 	}
 
