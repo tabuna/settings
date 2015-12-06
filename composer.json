@@ -3,7 +3,10 @@
   "description": "Settings for The Laravel Framework.",
   "keywords": [
     "laravel",
-    "settings"
+    "settings",
+    "database",
+    "json",
+    "key=>value"
   ],
   "require": {
     "php": ">=5.5.9",
