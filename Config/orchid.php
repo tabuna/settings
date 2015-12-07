@@ -5,7 +5,7 @@
         "package" => [
 
             'settings' => [
-                'status' => 'true',
+                'status' => false,
                 'times'  => '10',
             ],
         ],

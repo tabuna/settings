@@ -1,9 +1,9 @@
 <?php
 
-    use Illuminate\Database\Migrations\Migration;
-    use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-    class CreateTableSettings extends Migration
+class CreateTableSettings extends Migration
     {
 
         /**

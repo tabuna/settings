@@ -1,7 +1,7 @@
 <?php namespace Orchid\Settings\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Modules\Settings\Entities\Setting;
+use Orchid\Settings\Models\Settings;
 
 class SettingsFacades extends Facade
 {
@@ -12,6 +12,6 @@ class SettingsFacades extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return Setting::class;
+        return Settings::class;
     }
 }

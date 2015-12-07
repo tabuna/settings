@@ -15,9 +15,14 @@ trait SettingTrait
      */
     public function set($key, $value)
     {
-        return $this->created([
-            $key => $value,
-        ]);
+        return $this->firstOrNew([
+            'key' => $key
+        ])
+            ->fill([
+                'value' => $value
+            ])
+            ->save();
+
     }
 
 
@@ -30,6 +35,7 @@ trait SettingTrait
     public function get($key, $default = null)
     {
         $config = config('orchid.package.settings');
+
         if ($config['status']) {
             return Cache::remember(implode(",", (array)$key), $config['times'], function () use ($key, $default) {
                 return $this->getNoCache($key, $default);
@@ -42,43 +48,33 @@ trait SettingTrait
     }
 
 
+    /**
+     * @param $key
+     * @param null $default
+     * @return null
+     */
     public function getNoCache($key, $default = null)
     {
         if (is_array($key)) {
             $result = $this->whereIn('key', $key)->get();
-
             return empty($result) ? $default : $result;
         } else {
             $result = $this->where('key', $key)->first();
-
             return is_null($result) ? $default : $result;
         }
     }
 
 
-
-
     /**
-     * @param string $key
-     * @param null   $default
-     *
-     * @return string|array
+     * @param $key
+     * @return mixed
      */
-    /*
-    public function getValue($key, $default = null)
-    {
-        $result = $this->where('key', $key)->first();
-        return is_null($result) ? $default : $result->value;
-    }
-*/
-
-
     public function forget($key)
     {
         if (is_array($key)) {
-            return $this->whereIn('key', $key)->remove();
+            return $this->whereIn('key', $key)->delete();
         } else {
-            return $this->where('key', $key)->remove();
+            return $this->where('key', $key)->delete();
         }
     }
 
