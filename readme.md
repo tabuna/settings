@@ -50,3 +50,6 @@ Settings::get($key, $default);
 // Remove 
 Settings::forget($key);
 ```
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
