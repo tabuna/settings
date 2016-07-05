@@ -11,7 +11,7 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "5.1.*"
+    "laravel/framework": "^5.0"
   },
   "license": "MIT",
   "authors": [
@@ -22,7 +22,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Orchid\\Settings\\": ""
+      "Orchid\\Settings\\": "src/"
     }
   },
   "minimum-stability": "alpha",

@@ -1,4 +1,4 @@
-<?php namespace Orchid\Settings\Providers;
+<?php namespace Orchid\Access\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,32 +19,12 @@ class SettingsServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-		$this->registerConfig();
-		$this->registerDatabase();
-
-	}
-
-	/**
-	 * Register config.
-	 *
-	 * @return void
-	 */
-	protected function registerConfig()
-	{
-		$this->publishes([
-				__DIR__ . '/../Config/orchid.php' => config_path('orchid.php'),
-		]);
-		$this->mergeConfigFrom(
-				__DIR__ . '/../Config/orchid.php', 'orchid'
-		);
-	}
-
-	protected function registerDatabase()
-	{
 		$this->publishes([
 				__DIR__ . '/../Database/Migrations/' => database_path('migrations'),
 		], 'migrations');
 	}
+
+
 
 	/**
 	 * Register the service provider.
