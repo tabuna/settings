@@ -1,4 +1,4 @@
-<?php namespace Orchid\Access\Providers;
+<?php namespace Orchid\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
