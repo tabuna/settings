@@ -10,8 +10,7 @@
     "value"
   ],
   "require": {
-    "php": ">=5.5.9",
-    "laravel/framework": "^5.0"
+    "php": ">=5.5.9"
   },
   "license": "MIT",
   "authors": [
