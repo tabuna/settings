@@ -4,9 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
 class CreateTableSettings extends Migration
-    {
-
-        /**
+{
+    /**
          * Run the migrations.
          *
          * @return void
@@ -30,5 +29,4 @@ class CreateTableSettings extends Migration
         {
             Schema::drop('settings');
         }
-
-    }
+}
