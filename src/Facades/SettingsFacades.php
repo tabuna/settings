@@ -1,4 +1,6 @@
-<?php namespace Orchid\Settings\Facades;
+<?php
+
+namespace Orchid\Settings\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use Orchid\Settings\Models\Settings;
