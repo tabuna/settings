@@ -5,7 +5,7 @@ use Cache;
 trait SettingTrait
 {
     /**
-     * @param string       $key
+     * @param string $key
      * @param string|array $value
      *
      * Быстрая запись
@@ -14,6 +14,7 @@ trait SettingTrait
      */
     public function set($key, $value)
     {
+        Cache::forget($key);
         return $this->firstOrNew([
             'key' => $key,
         ])
@@ -25,7 +26,7 @@ trait SettingTrait
 
     /**
      * @param string|array $key
-     * @param string|null  $default
+     * @param string|null $default
      *
      * @return mixed
      */
@@ -61,9 +62,15 @@ trait SettingTrait
     public function forget($key)
     {
         if (is_array($key)) {
+            foreach ($key as $clear) {
+                Cache::forget($clear);
+            }
             return $this->whereIn('key', $key)->delete();
         } else {
+            Cache::forget($key);
             return $this->where('key', $key)->delete();
         }
     }
+
+
 }
