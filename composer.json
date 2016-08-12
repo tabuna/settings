@@ -22,7 +22,10 @@
   "autoload": {
     "psr-4": {
       "Orchid\\Settings\\": "src/"
-    }
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   },
   "minimum-stability": "alpha",
   "prefer-stable" : true
