@@ -1,4 +1,6 @@
-<?php namespace Orchid\Settings\Models;
+<?php
+
+namespace Orchid\Settings\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Orchid\Settings\SettingTrait;
@@ -36,6 +38,4 @@ class Settings extends Model
     protected $casts = [
         'value' => 'array',
     ];
-
-
 }

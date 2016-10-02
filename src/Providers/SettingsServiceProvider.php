@@ -1,10 +1,11 @@
-<?php namespace Orchid\Settings\Providers;
+<?php
+
+namespace Orchid\Settings\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
 class SettingsServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -20,10 +21,9 @@ class SettingsServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
+            __DIR__.'/../Database/Migrations/' => database_path('migrations'),
         ], 'migrations');
     }
-
 
     /**
      * Register the service provider.
@@ -44,5 +44,4 @@ class SettingsServiceProvider extends ServiceProvider
     {
         return [];
     }
-
 }

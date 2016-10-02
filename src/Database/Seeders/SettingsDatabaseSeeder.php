@@ -1,11 +1,12 @@
-<?php namespace Modules\Settings\Database\Seeders;
+<?php
+
+namespace Modules\Settings\Database\Seeders;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class SettingsDatabaseSeeder extends Seeder
 {
-
     /**
      * Run the database seeds.
      *
@@ -17,5 +18,4 @@ class SettingsDatabaseSeeder extends Seeder
 
         // $this->call("OthersTableSeeder");
     }
-
 }
