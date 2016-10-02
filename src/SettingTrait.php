@@ -4,6 +4,7 @@ use Cache;
 
 trait SettingTrait
 {
+
     /**
      * @param string $key
      * @param string|array $value
@@ -14,14 +15,15 @@ trait SettingTrait
      */
     public function set($key, $value)
     {
-        Cache::forget($key);
-        return $this->firstOrNew([
+        $result = $this->firstOrNew([
             'key' => $key,
         ])
             ->fill([
                 'value' => $value,
             ])
             ->save();
+        Cache::forget($key);
+        return $result;
     }
 
     /**
@@ -44,13 +46,14 @@ trait SettingTrait
     public function getNoCache($key, $default = null)
     {
         if (is_array($key)) {
-            $result = $this->whereIn('key', $key)->get();
-
+            $result = $this->select('key', 'value')
+                ->whereIn('key', $key)
+                ->pluck('value', 'key')
+                ->toArray();
             return empty($result) ? $default : $result;
         } else {
-            $result = $this->where('key', $key)->first();
-
-            return is_null($result) ? $default : $result;
+            $result = $this->select('value')->where('key', $key)->first();
+            return is_null($result) ? $default : $result->value;
         }
     }
 
@@ -62,14 +65,13 @@ trait SettingTrait
     public function forget($key)
     {
         if (is_array($key)) {
-            foreach ($key as $clear) {
-                Cache::forget($clear);
-            }
-            return $this->whereIn('key', $key)->delete();
+            $result = $this->whereIn('key', $key)->delete();
         } else {
-            Cache::forget($key);
-            return $this->where('key', $key)->delete();
+            $result = $this->where('key', $key)->delete();
         }
+
+        Cache::flush();
+        return $result;
     }
 
 
