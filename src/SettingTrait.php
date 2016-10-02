@@ -1,12 +1,13 @@
-<?php namespace Orchid\Settings;
+<?php
+
+namespace Orchid\Settings;
 
 use Cache;
 
 trait SettingTrait
 {
-
     /**
-     * @param string $key
+     * @param string       $key
      * @param string|array $value
      *
      * Быстрая запись
@@ -23,18 +24,19 @@ trait SettingTrait
             ])
             ->save();
         Cache::forget($key);
+
         return $result;
     }
 
     /**
      * @param string|array $key
-     * @param string|null $default
+     * @param string|null  $default
      *
      * @return mixed
      */
     public function get($key, $default = null)
     {
-        return Cache::rememberForever(implode(',', (array)$key), function () use ($key, $default) {
+        return Cache::rememberForever(implode(',', (array) $key), function () use ($key, $default) {
             return $this->getNoCache($key, $default);
         });
     }
@@ -50,9 +52,11 @@ trait SettingTrait
                 ->whereIn('key', $key)
                 ->pluck('value', 'key')
                 ->toArray();
+
             return empty($result) ? $default : $result;
         } else {
             $result = $this->select('value')->where('key', $key)->first();
+
             return is_null($result) ? $default : $result->value;
         }
     }
@@ -71,8 +75,7 @@ trait SettingTrait
         }
 
         Cache::flush();
+
         return $result;
     }
-
-
 }
