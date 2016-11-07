@@ -1,6 +1,6 @@
 <?php
 
-use Orchid\Settings\Facades\Settings;
+use Orchid\Settings\Facades\Setting;
 
 if (!function_exists('settings')) {
     /**
@@ -11,7 +11,7 @@ if (!function_exists('settings')) {
      */
     function settings($key, $default = null)
     {
-        return Settings::get($key, $default);
+        return Setting::get($key, $default);
     }
 }
 
@@ -25,7 +25,7 @@ if (!function_exists('settings_set')) {
      */
     function settings_set($key, $value)
     {
-        return Settings::set($key, $value);
+        return Setting::set($key, $value);
     }
 }
 
@@ -37,6 +37,6 @@ if (!function_exists('settings_forget')) {
      */
     function settings_forget($key)
     {
-        return Settings::forget($key);
+        return Setting::forget($key);
     }
 }

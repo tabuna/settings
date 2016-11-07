@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchid\Settings;
+namespace Orchid\Settings\Models;
 
 use Cache;
 
@@ -10,7 +10,7 @@ trait SettingTrait
      * @param string       $key
      * @param string|array $value
      *
-     * Быстрая запись
+     * Fast record
      *
      * @return bool
      */
@@ -31,7 +31,7 @@ trait SettingTrait
     /**
      * @param string|array $key
      * @param string|null  $default
-     *
+     * Get values
      * @return mixed
      */
     public function get($key, $default = null)
@@ -42,8 +42,9 @@ trait SettingTrait
     }
 
     /**
-     * @param      $key
+     * @param $key
      * @param null $default
+     * @return null
      */
     public function getNoCache($key, $default = null)
     {
