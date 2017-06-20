@@ -34,7 +34,10 @@
     "laravel": {
       "providers": [
         "Orchid\\Setting\\Providers\\SettingServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "Setting": "Orchid\\Setting\\Facades\\Setting"
+      }
     }
   },
   "minimum-stability": "alpha",
