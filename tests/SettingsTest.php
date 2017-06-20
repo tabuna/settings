@@ -1,6 +1,6 @@
 <?php
 
-use Settings;
+use Orchid\Setting\Facades\Setting;
 
 class SettingsTest extends TestCase
 {
@@ -15,17 +15,17 @@ class SettingsTest extends TestCase
         $value = 'value-'.str_random(40);
 
         // Пробуем записать одно значение
-        Settings::set($key, $value);
+        Settin::set($key, $value);
 
         //Проверяем это значение
-        $result = Settings::get($key, null);
+        $result = Setting::get($key, null);
         $this->assertEquals($value, $result->value);
 
         //Удаляем значение
-        Settings::forget($key);
+        Setting::forget($key);
 
         //Проверяем это значение
-        $result = Settings::get($key);
+        $result = Setting::get($key);
         $this->assertEquals(null, $result);
     }
 
@@ -39,7 +39,7 @@ class SettingsTest extends TestCase
 
         //Добавим несколько значений
         foreach ($valueArray as $key => $value) {
-            Settings::set($key, $value);
+            Setting::set($key, $value);
         }
         //Возьмём все эти значения
         $result = Settings::get([
@@ -51,7 +51,7 @@ class SettingsTest extends TestCase
         $this->assertEquals(3, $result->count());
 
         //Удалим все значениея
-        $result = Settings::forget([
+        $result = Setting::forget([
             'test-1',
             'test-2',
             'test-3',

@@ -7,21 +7,17 @@ class CreateTableSettings extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->string('key')->primary();
-            $table->text('value');
+            $table->json('value');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

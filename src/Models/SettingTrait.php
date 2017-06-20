@@ -1,8 +1,8 @@
 <?php
 
-namespace Orchid\Settings\Models;
+namespace Orchid\Setting\Models;
 
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 trait SettingTrait
 {
@@ -14,7 +14,7 @@ trait SettingTrait
      *
      * @return bool
      */
-    public function set($key, $value)
+    public function set(string $key, $value) : bool
     {
         $result = $this->firstOrNew([
             'key' => $key,
@@ -31,19 +31,21 @@ trait SettingTrait
     /**
      * @param string|array $key
      * @param string|null  $default
-     * Get values
+     *                              Get values
+     *
      * @return mixed
      */
     public function get($key, $default = null)
     {
-        return Cache::rememberForever(implode(',', (array) $key), function () use ($key, $default) {
+        return Cache::rememberForever('settings-' . implode(',', (array) $key), function () use ($key, $default) {
             return $this->getNoCache($key, $default);
         });
     }
 
     /**
-     * @param $key
+     * @param      $key
      * @param null $default
+     *
      * @return null
      */
     public function getNoCache($key, $default = null)
@@ -55,11 +57,11 @@ trait SettingTrait
                 ->toArray();
 
             return empty($result) ? $default : $result;
-        } else {
-            $result = $this->select('value')->where('key', $key)->first();
-
-            return is_null($result) ? $default : $result->value;
         }
+
+        $result = $this->select('value')->where('key', $key)->first();
+
+        return is_null($result) ? $default : $result->value;
     }
 
     /**

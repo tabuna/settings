@@ -10,7 +10,7 @@
     "value"
   ],
   "require": {
-    "php": ">=5.5.9"
+    "php": ">=7.0"
   },
   "license": "MIT",
   "authors": [
@@ -21,11 +21,21 @@
   ],
   "autoload": {
     "psr-4": {
-      "Orchid\\Settings\\": "src/"
+      "Orchid\\Setting\\": "src/"
     },
     "files": [
       "src/helpers.php"
     ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Orchid\\Setting\\Providers\\SettingServiceProvider"
+      ]
+    }
   },
   "minimum-stability": "alpha",
   "prefer-stable": true

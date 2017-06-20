@@ -1,12 +1,15 @@
-<?php namespace Orchid\Foundation\Facades;
+<?php
+
+namespace Orchid\Setting\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Orchid\Settings\Models\Setting as SettingModel;
+use Orchid\Setting\Models\Setting as SettingModel;
 
 class Setting extends Facade
 {
     /**
-     * Model of Setting
+     * Model of Setting.
+     *
      * @return mixed
      */
     protected static function getFacadeAccessor()
