@@ -20,13 +20,13 @@ Simple key-value storage package from Laravel 5
 	service provider :
 
 	```php
-	Orchid\Setting\Providers\SettingsServiceProvider::class
+	Orchid\Settings\Providers\SettingsServiceProvider::class
 	```
 
     class aliases :
 
 	```php
-	'Setting' => Orchid\Setting\Facades\SettingFacades::class
+	'Settings' => Orchid\Settings\Facades\SettingsFacades::class
 	```
 
 1. create settings table
@@ -39,16 +39,16 @@ Simple key-value storage package from Laravel 5
 ## Usage
 
 ```php
-use Settings;
+use Setting;
 
 //Add settings for key => value
-Settings::set($key,$value);
+Setting::set($key,$value);
 
 // Get settings,
-Settings::get($key, $default);
+Setting::get($key, $default);
 
 // Remove 
-Settings::forget($key);
+Setting::forget($key);
 ```
 ## License
 
