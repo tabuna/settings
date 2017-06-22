@@ -1,7 +1,7 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use Orchid\Setting\Facades\Setting;
+use PHPUnit\Framework\TestCase;
 
 class SettingsTest extends TestCase
 {
