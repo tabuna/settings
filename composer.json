@@ -1,30 +1,33 @@
 {
   "name": "orchid/settings",
   "description": "Settings for The Laravel Framework.",
-  "keywords": [
-    "laravel",
-    "settings",
-    "database",
-    "json",
-    "key",
-    "value"
+  "keywords": ["laravel", "settings", "database", "json", "key", "value"],
+  "type": "library",
+  "license": "MIT",
+  "homepage": "https://theorchid.github.io/",
+  "support": {
+    "issues": "https://github.com/theOrchid/Alert/issues",
+    "source": "https://github.com/theOrchid/Alert"
+  },
+  "authors": [
+    {
+      "name": "Alexandr Chernyaev",
+      "email": "bliz48rus@gmail.com"
+    }
   ],
   "require": {
     "php": ">=7.0"
   },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "tabuna",
-      "email": "bliz48rus@gmail.com"
-    }
-  ],
+  "require-dev": {
+    "phpunit/phpunit": "~5.7",
+    "laravel/framework": ">=5.4"
+  },
   "autoload": {
     "psr-4": {
       "Orchid\\Setting\\": "src/"
     },
     "files": [
-      "src/helpers.php"
+      "src/Setting/helpers.php"
     ]
   },
   "extra": {

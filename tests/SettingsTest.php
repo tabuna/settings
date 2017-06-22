@@ -1,5 +1,6 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use Orchid\Setting\Facades\Setting;
 
 class SettingsTest extends TestCase
@@ -15,7 +16,7 @@ class SettingsTest extends TestCase
         $value = 'value-'.str_random(40);
 
         // Пробуем записать одно значение
-        Settin::set($key, $value);
+        Setting::set($key, $value);
 
         //Проверяем это значение
         $result = Setting::get($key, null);
