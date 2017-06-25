@@ -24,10 +24,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Orchid\\Setting\\": "src/"
+      "Orchid\\": "src/Orchid"
     },
     "files": [
-      "src/Setting/helpers.php"
+      "src/Orchid/Setting/helpers.php"
     ]
   },
   "extra": {
