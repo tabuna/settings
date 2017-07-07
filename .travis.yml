@@ -7,15 +7,17 @@ php:
 dist: trusty
 sudo: required
 
-addons:
-  apt:
-    packages:
-    - mysql-server-5.7
-    - mysql-client-core-5.7
-    - mysql-client-5.7
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+services:
+  - mysql
 
 before_install:
-  - mysql -u root -e "create database settings;"
+  - chmod +x ./scripts/*
+  - sudo sh ./scripts/travis_mysql_5.7.sh
+  - mysql -e "create database IF NOT EXISTS settings;" -uroot
 
 before_script:
   - composer self-update
