@@ -1,0 +1,25 @@
+language: php
+
+php:
+  - '7.0'
+  - '7.1'
+
+dist: trusty
+sudo: required
+
+addons:
+  apt:
+    packages:
+    - mysql-server-5.7
+    - mysql-client-core-5.7
+    - mysql-client-5.7
+
+before_install:
+  - mysql -u root -e "create database settings;"
+
+before_script:
+  - composer self-update
+  - composer install
+
+script:
+  - phpunit

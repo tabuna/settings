@@ -12,17 +12,20 @@ class Setting extends Model
      * @var bool
      */
     public $timestamps = false;
-
+    /**
+     * Cache result
+     *
+     * @var bool
+     */
+    public $cache = true;
     /**
      * @var string
      */
     protected $table = 'settings';
-
     /**
      * @var string
      */
     protected $primaryKey = 'key';
-
     /**
      * @var array
      */

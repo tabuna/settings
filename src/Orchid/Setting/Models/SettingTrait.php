@@ -23,9 +23,31 @@ trait SettingTrait
                 'value' => $value,
             ])
             ->save();
-        Cache::forget($key);
+
+        $this->cacheForget($key);
 
         return $result;
+    }
+
+    /**
+     * @param $key
+     *
+     * @return null
+     */
+    private function cacheForget($key)
+    {
+        if (!$this->cache) {
+            return null;
+        }
+
+        if (is_array($key)) {
+            foreach ($key as $value) {
+                Cache::forget($value);
+            }
+
+        } else {
+            Cache::forget($key);
+        }
     }
 
     /**
@@ -37,7 +59,11 @@ trait SettingTrait
      */
     public function get($key, $default = null)
     {
-        return Cache::rememberForever('settings-'.implode(',', (array) $key), function () use ($key, $default) {
+        if (!$this->cache) {
+            return $this->getNoCache($key, $default);
+        }
+
+        return Cache::rememberForever('settings-' . implode(',', (array) $key), function () use ($key, $default) {
             return $this->getNoCache($key, $default);
         });
     }
@@ -69,7 +95,7 @@ trait SettingTrait
      *
      * @return mixed
      */
-    public function forget($key)
+    public function forget($key) : bool
     {
         if (is_array($key)) {
             $result = $this->whereIn('key', $key)->delete();
@@ -77,8 +103,9 @@ trait SettingTrait
             $result = $this->where('key', $key)->delete();
         }
 
-        Cache::flush();
+        $this->cacheForget($key);
 
         return $result;
     }
+
 }
