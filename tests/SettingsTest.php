@@ -8,27 +8,26 @@ use PHPUnit\Framework\TestCase;
 
 class SettingsTest extends TestCase
 {
-
     /**
-     * Database connect
+     * Database connect.
      *
      * @var
      */
     public $capsule;
 
     /**
-     * Setting Model
+     * Setting Model.
      *
      * @var
      */
     public $setting;
 
     /**
-     *  Init
+     *  Init.
      */
     public function setUp()
     {
-        $capsule = new Capsule;
+        $capsule = new Capsule();
         $capsule->addConnection([
             'driver'   => 'mysql',
             'host'     => 'localhost',
@@ -37,7 +36,7 @@ class SettingsTest extends TestCase
             'password' => '',
             'prefix'   => '',
         ]);
-        $capsule->setEventDispatcher(new Dispatcher(new Container));
+        $capsule->setEventDispatcher(new Dispatcher(new Container()));
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
 
@@ -58,9 +57,8 @@ class SettingsTest extends TestCase
     {
 
         //Запишем значение
-        $key = 'test-' . str_random(40);
-        $value = 'value-' . str_random(40);
-
+        $key = 'test-'.str_random(40);
+        $value = 'value-'.str_random(40);
 
         $this->setting->set($key, $value);
 
@@ -77,13 +75,12 @@ class SettingsTest extends TestCase
     }
 
     /** @test */
-
     public function testManyValue()
     {
         $valueArray = [
-            'test-1' => 'value-' . str_random(40),
-            'test-2' => 'value-' . str_random(40),
-            'test-3' => 'value-' . str_random(40),
+            'test-1' => 'value-'.str_random(40),
+            'test-2' => 'value-'.str_random(40),
+            'test-3' => 'value-'.str_random(40),
         ];
 
         //Добавим несколько значений
@@ -107,6 +104,4 @@ class SettingsTest extends TestCase
         ]);
         $this->assertTrue($result);
     }
-
-
 }
