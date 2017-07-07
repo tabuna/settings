@@ -1,6 +1,7 @@
 ## Settings
 Simple key-value storage package from Laravel 5
 
+[![Build Status](https://travis-ci.org/TheOrchid/Settings.svg?branch=master)](https://travis-ci.org/TheOrchid/Settings)
 [![Latest Stable Version](https://poser.pugx.org/orchid/settings/v/stable)](https://packagist.org/packages/orchid/settings)
 [![Total Downloads](https://poser.pugx.org/orchid/settings/downloads)](https://packagist.org/packages/orchid/settings)
 [![License](https://poser.pugx.org/orchid/settings/license)](https://packagist.org/packages/orchid/settings)
