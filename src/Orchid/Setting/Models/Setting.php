@@ -13,7 +13,7 @@ class Setting extends Model
      */
     public $timestamps = false;
     /**
-     * Cache result
+     * Cache result.
      *
      * @var bool
      */
