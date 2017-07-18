@@ -21,7 +21,7 @@ Simple key-value storage package from Laravel 5
 	service provider :
 
 	```php
-	Orchid\Settings\Providers\SettingServiceProvider::class
+	Orchid\Setting\Providers\SettingServiceProvider::class
 	```
 
     class aliases :
