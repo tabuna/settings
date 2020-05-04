@@ -1,6 +1,6 @@
 # Laravel Settings
 
-[![Build Status](https://travis-ci.org/TheOrchid/Settings.svg?branch=master)](https://travis-ci.org/TheOrchid/Settings)
+![Unit tests](https://github.com/legacy-orchid/settings/workflows/Unit%20tests/badge.svg)
 [![Latest Stable Version](https://poser.pugx.org/orchid/settings/v/stable)](https://packagist.org/packages/orchid/settings)
 [![Total Downloads](https://poser.pugx.org/orchid/settings/downloads)](https://packagist.org/packages/orchid/settings)
 [![License](https://poser.pugx.org/orchid/settings/license)](https://packagist.org/packages/orchid/settings)
@@ -17,7 +17,7 @@ Run this at the command line:
 $ composer require orchid/settings
 ```
 
-Create settings table:
+after run migrate:
 
 ```php
 $ php artisan migrate
