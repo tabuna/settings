@@ -17,7 +17,7 @@ Run this at the command line:
 $ composer require orchid/settings
 ```
 
-after run migrate:
+After do the migration:
 
 ```php
 $ php artisan migrate
