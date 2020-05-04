@@ -1,4 +1,5 @@
-# Laravel Settings
+# <img src="https://raw.githubusercontent.com/legacy-orchid/settings/master/logo.svg" width="50" height="50" alt="Laravel Breadcrumbs"> Laravel Settings
+
 [![Build Status](https://travis-ci.org/TheOrchid/Settings.svg?branch=master)](https://travis-ci.org/TheOrchid/Settings)
 [![Latest Stable Version](https://poser.pugx.org/orchid/settings/v/stable)](https://packagist.org/packages/orchid/settings)
 [![Total Downloads](https://poser.pugx.org/orchid/settings/downloads)](https://packagist.org/packages/orchid/settings)
