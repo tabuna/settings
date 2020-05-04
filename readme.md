@@ -1,56 +1,71 @@
-## Settings
-Simple key-value storage package from Laravel 5
-
+# Laravel Settings
 [![Build Status](https://travis-ci.org/TheOrchid/Settings.svg?branch=master)](https://travis-ci.org/TheOrchid/Settings)
 [![Latest Stable Version](https://poser.pugx.org/orchid/settings/v/stable)](https://packagist.org/packages/orchid/settings)
 [![Total Downloads](https://poser.pugx.org/orchid/settings/downloads)](https://packagist.org/packages/orchid/settings)
 [![License](https://poser.pugx.org/orchid/settings/license)](https://packagist.org/packages/orchid/settings)
 
 
+The simplest persistent data store using a key to access a value.
+
 
 ## Installation
 
-1. install package
+Run this at the command line:
 
-	```php
-    composer require orchid/settings
-	```
+```php
+$ composer require orchid/settings
+```
 
-1. edit config/app.php
+Create settings table:
 
-	service provider :
-
-	```php
-	Orchid\Setting\Providers\SettingServiceProvider::class
-	```
-
-    class aliases :
-
-	```php
-	'Setting' => Orchid\Setting\Facades\Setting::class
-	```
-
-1. create settings table
-
-	```php
-	php artisan vendor:publish
-	php artisan migrate
-	```
+```php
+$ php artisan migrate
+```
 
 ## Usage
 
+To add a new value to the repository you need to use:
+
 ```php
-use Setting;
+use Orchid\Support\Facades\Setting;
 
-//Add settings for key => value
-Setting::set($key,$value);
+Setting::set($key, $value);
+```
 
-// Get settings,
+The transferred value will be converted to JSON, and upon receipt, decoding will occur, this allows you to place not only simple types, but also arrays in the storage.
+
+To get the value:
+```php
+/**
+* @param string|array $key
+* @param string|null $default
+*/
 Setting::get($key, $default);
+// or using the helper function
+setting($key, $default);
+```
 
-// Remove 
+By default, each item cached before it is changed, in cases if you need to get a value not from the cache, you need to use the getNoCache method.
+
+```php
+Setting::getNoCache($key, $default = null);
+```
+
+> **Note.** When transferring keys as an array, subsequent updates of values will not automatically flush the cache.
+
+To delete a value:
+
+```php
+/**
+* @param string|array $key
+* @param string|null $default
+*/
 Setting::forget($key);
 ```
+
+Please note that you can get or delete several values from the repository at once, for this you need to pass an array with the names of the keys as the first argument.
+
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
