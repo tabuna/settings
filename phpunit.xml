@@ -8,11 +8,38 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
+         stopOnError="false"
+         defaultTestSuite="Main"
+         verbose="true"
 >
     <testsuites>
-        <testsuite name="Package Test Suite">
-            <directory suffix=".php">./tests/</directory>
+        <testsuite name="Main">
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+            <exclude>
+                <directory suffix=".blade.php">./src/</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_NAME" value="Settings"/>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="APP_DEBUG" value="true"/>
+        <env name="APP_URL" value="http://127.0.0.1:8000"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="CACHE_DRIVER" value="file"/>
+        <env name="SESSION_DRIVER" value="file"/>
+        <env name="SESSION_LIFETIME" value="120"/>
+        <env name="SCOUT_DRIVER" value="array"/>
+        <env name="SCOUT_QUEUE" value="true"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+    </php>
+    <logging>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>

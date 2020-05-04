@@ -1,14 +1,17 @@
 {
   "name": "orchid/settings",
-  "description": "Settings for The Laravel Framework.",
-  "keywords": ["laravel", "settings", "database", "json", "key", "value"],
+  "description": "Settings this is key-value storage",
+  "keywords": [
+    "laravel",
+    "settings",
+    "database",
+    "json",
+    "key",
+    "value",
+    "storage"
+  ],
   "type": "library",
   "license": "MIT",
-  "homepage": "https://theorchid.github.io/",
-  "support": {
-    "issues": "https://github.com/theOrchid/Settings/issues",
-    "source": "https://github.com/theOrchid/Settings"
-  },
   "authors": [
     {
       "name": "Alexandr Chernyaev",
@@ -16,35 +19,38 @@
     }
   ],
   "require": {
-    "php": ">=7.0",
-    "laravel/framework": "~5.4"
+    "php": ">=7.1",
+    "laravel/framework": "~7.0"
   },
   "require-dev": {
-    "fzaninotto/faker": "~1.4",
-    "mockery/mockery": "0.9.*",
-    "phpunit/phpunit": "~5.7"
+    "orchestra/testbench": "~5.0",
+    "phpunit/phpunit": "^8.0"
   },
   "autoload": {
     "psr-4": {
-      "Orchid\\": "src/Orchid"
+      "Orchid\\Settings\\": "src/"
     },
     "files": [
-      "src/Orchid/Setting/helpers.php"
+      "src/helpers.php"
     ]
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
-    },
-    "laravel": {
-      "providers": [
-        "Orchid\\Setting\\Providers\\SettingServiceProvider"
-      ],
-      "aliases": {
-        "Setting": "Orchid\\Setting\\Facades\\Setting"
-      }
+  "autoload-dev": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
+    ],
+    "psr-4": {
+      "Orchid\\Settings\\Tests\\": "tests/"
     }
   },
-  "minimum-stability": "alpha",
-  "prefer-stable": true
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Orchid\\Settings\\SettingServiceProvider"
+      ],
+      "aliases": {
+        "Setting": "Orchid\\Settings\\Setting"
+      }
+    }
+  }
 }

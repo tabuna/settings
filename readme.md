@@ -28,7 +28,7 @@ $ php artisan migrate
 To add a new value to the repository you need to use:
 
 ```php
-use Orchid\Support\Facades\Setting;
+use Orchid\Settings\Setting;
 
 Setting::set($key, $value);
 ```

@@ -1,13 +1,13 @@
 <?php
 
-use Orchid\Setting\Facades\Setting;
+use Orchid\Settings\Setting;
 
 if (!function_exists('setting')) {
     /**
-     * @param      $key
-     * @param null $default
+     * @param string|array $key
+     * @param null         $default
      *
-     * @return mixed
+     * @return Setting
      */
     function setting($key, $default = null)
     {

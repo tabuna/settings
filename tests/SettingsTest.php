@@ -1,68 +1,30 @@
 <?php
 
-use Illuminate\Container\Container;
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Events\Dispatcher;
-use Orchid\Setting\Models\Setting;
-use PHPUnit\Framework\TestCase;
+declare(strict_types=1);
+
+namespace Orchid\Settings\Tests;
+
+use Illuminate\Support\Str;
+use Orchid\Settings\Tuning;
 
 class SettingsTest extends TestCase
 {
     /**
-     * Database connect.
-     *
-     * @var
-     */
-    public $capsule;
-
-    /**
      * Setting Model.
      *
-     * @var
+     * @var Tuning
      */
     public $setting;
 
-    /**
-     *  Init.
-     */
-    public function setUp()
+    public function testForOneValue(): void
     {
-        $capsule = new Capsule();
-        $capsule->addConnection([
-            'driver'   => 'mysql',
-            'host'     => 'localhost',
-            'database' => 'settings',
-            'username' => 'root',
-            'password' => '',
-            'prefix'   => '',
-        ]);
-        $capsule->setEventDispatcher(new Dispatcher(new Container()));
-        $capsule->setAsGlobal();
-        $capsule->bootEloquent();
-
-        Capsule::schema()->dropIfExists('settings');
-        Capsule::schema()->create('settings', function ($table) {
-            $table->string('key')->primary();
-            $table->json('value');
-        });
-        $this->capsule = $capsule->getDatabaseManager();
-
-        $setting = new Setting();
-        $setting->cache = false;
-        $this->setting = $setting;
-    }
-
-    /** @test */
-    public function testOneValue()
-    {
-
         //Запишем значение
-        $key = 'test-'.str_random(40);
-        $value = 'value-'.str_random(40);
+        $key = 'test-' . Str::random(40);
+        $value = 'value-' . Str::random(40);
 
         $this->setting->set($key, $value);
 
-        $result = $this->setting->get($key, null);
+        $result = $this->setting->get($key);
 
         $this->assertEquals($value, $result);
 
@@ -71,16 +33,16 @@ class SettingsTest extends TestCase
 
         //Проверяем это значение
         $result = $this->setting->get($key);
+
         $this->assertEquals(null, $result);
     }
 
-    /** @test */
-    public function testManyValue()
+    public function testForManyValue(): void
     {
         $valueArray = [
-            'test-1' => 'value-'.str_random(40),
-            'test-2' => 'value-'.str_random(40),
-            'test-3' => 'value-'.str_random(40),
+            'test-1' => 'value-' . Str::random(40),
+            'test-2' => 'value-' . Str::random(40),
+            'test-3' => 'value-' . Str::random(40),
         ];
 
         //Добавим несколько значений
@@ -94,7 +56,7 @@ class SettingsTest extends TestCase
             'test-3',
         ]);
 
-        $this->assertEquals(3, count($result));
+        $this->assertCount(3, $result);
 
         //Удалим все значениея
         $result = $this->setting->forget([
@@ -102,6 +64,59 @@ class SettingsTest extends TestCase
             'test-2',
             'test-3',
         ]);
-        $this->assertTrue($result);
+
+        $this->assertEquals(3, $result);
+    }
+
+    public function testForRewriteCache(): void
+    {
+        $this->setting->set('cache-key', 'old');
+        $this->setting->get('cache-key');
+
+        $this->setting->set('cache-key', 'new');
+        $this->assertStringContainsString('new', $this->setting->get('cache-key'));
+    }
+
+    /**
+     * @dataProvider notExistValues
+     *
+     * @param $defaultValue
+     */
+    public function testDefaultValue($defaultValue): void
+    {
+        $value = $this->setting->get('nonexistent value', $defaultValue);
+
+        $this->assertEquals(gettype($defaultValue), gettype($value));
+        $this->assertEquals($defaultValue, $value);
+    }
+
+    /**
+     * @return array
+     */
+    public function notExistValues(): array
+    {
+        return [
+            ['string'],
+            [123],
+            [new \stdClass()],
+            [['test', 123]],
+        ];
+    }
+
+    public function testUseHelper(): void
+    {
+        $this->setting->set('helper', 'run');
+
+        $this->assertEquals('run', setting('helper'));
+
+        $this->assertEquals('default', setting('not-found', 'default'));
+    }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $setting = new Tuning();
+        $setting->cache = false;
+        $this->setting = $setting;
     }
 }
