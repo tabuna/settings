@@ -28,6 +28,8 @@ $ php artisan migrate
 To add a new value to the repository you need to use:
 
 ```php
+<?php
+
 use Orchid\Settings\Setting;
 
 Setting::set($key, $value);
@@ -37,6 +39,8 @@ The transferred value will be converted to JSON, and upon receipt, decoding will
 
 To get the value:
 ```php
+<?php
+
 /**
 * @param string|array $key
 * @param string|null $default
@@ -57,6 +61,8 @@ Setting::getNoCache($key, $default = null);
 To delete a value:
 
 ```php
+<?php
+
 /**
 * @param string|array $key
 * @param string|null $default
