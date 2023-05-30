@@ -94,7 +94,7 @@ class SettingsTest extends TestCase
     /**
      * @return array
      */
-    public function notExistValues(): array
+    public static function notExistValues(): array
     {
         return [
             ['string'],
