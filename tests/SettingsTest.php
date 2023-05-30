@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Orchid\Settings\Tests;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use Illuminate\Support\Str;
 use Orchid\Settings\Tuning;
 
@@ -78,10 +79,10 @@ class SettingsTest extends TestCase
     }
 
     /**
-     * @dataProvider notExistValues
      *
      * @param $defaultValue
      */
+    #[DataProvider('notExistValues')]
     public function testDefaultValue($defaultValue): void
     {
         $value = $this->setting->get('nonexistent value', $defaultValue);
