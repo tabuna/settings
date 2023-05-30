@@ -8,7 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use Illuminate\Support\Str;
 use Orchid\Settings\Tuning;
 
-class SettingsTest extends TestCase
+final class SettingsTest extends TestCase
 {
     /**
      * Setting Model.
